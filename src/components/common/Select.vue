@@ -43,5 +43,6 @@ select {
   border: 1px solid #ccc;
   background-color: white;
   cursor: pointer;
+  color: #333;
 }
 </style>
