@@ -5,7 +5,7 @@
     <p>{{ task.description }}</p>
 
     <div class="task-footer">
-      <span>{{ task.status }}</span>
+      <span>{{ task.status.replace('_', ' ') }}</span>
       <span>{{ task.priority }}</span>
     </div>
   </div>
@@ -26,6 +26,7 @@ defineProps<{
   padding: 16px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333;
 }
 
 .task-footer {
@@ -34,5 +35,6 @@ defineProps<{
   margin-top: 12px;
   font-size: 0.85rem;
   color: #666;
+  text-transform: capitalize;
 }
 </style>
