@@ -20,5 +20,7 @@ defineProps<{
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-width: 30rem;
+  margin: 2rem auto;
 }
 </style>

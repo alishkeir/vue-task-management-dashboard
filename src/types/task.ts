@@ -6,7 +6,7 @@ export type TTaskFilter = TTaskStatus | 'all';
 export interface ITask {
   id: string | number;
   title: string;
-  description?: string;
+  assignee?: string;
   status: TTaskStatus;
   priority: TTaskPriority;
   createdAt: string;
