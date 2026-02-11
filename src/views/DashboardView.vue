@@ -16,6 +16,7 @@ import { useTaskStore } from '@/stores/taskStore';
 import TaskList from '@/components/tasks/TaskList.vue';
 import Select from '@/components/common/Select.vue';
 import Loader from '@/components/common/Loader.vue';
+import { getStatusOptions } from '@/helpers/taskHelpers';
 
 const store = useTaskStore();
 const selectedFilter = ref('all');
@@ -26,22 +27,8 @@ onMounted(() => {
 });
 
 const taskStatusOptions = computed(() => {
-  // extract all thestatus values from the tasks array
-  const statuses = [...new Set(store.tasks.map((t) => t.status))];
-
-  // create "ALL" option
-  const options = [{ label: 'All Tasks', value: 'all' }];
-
-  // adding the other status options to the array
-  statuses.forEach((status) => {
-    const label = status.replace(/_/g, ' ');
-    options.push({
-      label: label.charAt(0).toUpperCase() + label.slice(1),
-      value: status,
-    });
-  });
-
-  return options;
+  const options = getStatusOptions(store.tasks);
+  return [{ label: 'All Tasks', value: 'all' }, ...options];
 });
 
 const filteredTasks = computed(() => {
