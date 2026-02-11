@@ -4,8 +4,7 @@
 
     <Select v-model="selectedFilter" :options="taskStatusOptions" label="Filter by Status:" />
 
-    <!-- TODO: use spinner component-->
-    <div v-if="store.isLoading">Loading...</div>
+    <Loader v-if="store.isLoading" />
 
     <TaskList v-else :tasks="filteredTasks" />
   </div>
@@ -16,6 +15,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useTaskStore } from '@/stores/taskStore';
 import TaskList from '@/components/tasks/TaskList.vue';
 import Select from '@/components/common/Select.vue';
+import Loader from '@/components/common/Loader.vue';
 
 const store = useTaskStore();
 const selectedFilter = ref('all');
