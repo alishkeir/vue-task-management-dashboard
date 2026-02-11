@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Buy high-altitude coffee beans",
+    "description": "Check the local roastery for Ethiopian Yirgacheffe.",
+    "status": "todo",
+    "priority": "medium",
+    "createdAt": "2026-02-11T08:30:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Fix the leaking kitchen faucet",
+    "description": "Requires a new O-ring and a crescent wrench.",
+    "status": "in_progress",
+    "priority": "high",
+    "createdAt": "2026-02-10T14:15:00Z"
+  },
+  {
+    "id": 3,
+    "title": "Renew gym membership",
+    "description": "Annual plan expires at the end of the week.",
+    "status": "done",
+    "priority": "low",
+    "createdAt": "2026-02-01T09:00:00Z"
+  },
+  {
+    "id": 4,
+    "title": "Book mountain cabin for weekend",
+    "description": "Check availability for the last weekend of March.",
+    "status": "todo",
+    "priority": "high",
+    "createdAt": "2026-02-11T11:00:00Z"
+  },
+  {
+    "id": 5,
+    "title": "Clean the aquarium",
+    "description": "Scrub the glass and replace 20% of the water.",
+    "status": "in_progress",
+    "priority": "medium",
+    "createdAt": "2026-02-09T16:45:00Z"
+  },
+  {
+    "id": 6,
+    "title": "Organize bookshelf",
+    "description": "Sort by genre and then alphabetically by author.",
+    "status": "todo",
+    "priority": "low",
+    "createdAt": "2026-02-11T13:20:00Z"
+  }
+]
