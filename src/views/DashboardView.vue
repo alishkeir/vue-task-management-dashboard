@@ -2,7 +2,10 @@
   <div class="dashboard-view">
     <h1>Dashboard</h1>
 
-    <Select v-model="selectedFilter" :options="taskStatusOptions" label="Filter by Status:" />
+    <div class="dashboard-filters">
+      <Select v-model="selectedFilter" :options="taskStatusOptions" label="Filter by Status:" />
+      <TextInputField v-model="searchTerm" placeholder="Search by title" />
+    </div>
 
     <Loader v-if="store.isLoading" />
 
@@ -16,9 +19,12 @@ import { useTaskStore } from '@/stores/taskStore';
 import TaskList from '@/components/tasks/TaskList.vue';
 import Select from '@/components/common/Select.vue';
 import Loader from '@/components/common/Loader.vue';
+import TextInputField from '@/components/common/TextInputField.vue';
 
 const store = useTaskStore();
 const selectedFilter = ref('all');
+
+const searchTerm = ref('');
 
 // fetch the data as soonas the page loads
 onMounted(() => {
@@ -32,8 +38,15 @@ const taskStatusOptions = computed(() => {
 });
 
 const filteredTasks = computed(() => {
-  if (selectedFilter.value === 'all') return store.tasks;
-  return store.tasks.filter((t) => t.status === selectedFilter.value);
+  return store.tasks.filter((task) => {
+    // status filter
+    const statusMatches = selectedFilter.value === 'all' || task.status === selectedFilter.value;
+
+    // search  term filter (not case-sensitive)
+    const searchMatch = task.title.toLowerCase().includes(searchTerm.value.toLowerCase());
+
+    return statusMatches && searchMatch;
+  });
 });
 </script>
 
@@ -42,5 +55,21 @@ const filteredTasks = computed(() => {
   padding: 2rem;
   max-width: 900px;
   margin: 0 auto;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.dashboard-filters {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.dashboard-filters > * {
+  flex: 1;
 }
 </style>
